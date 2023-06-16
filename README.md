@@ -1,18 +1,18 @@
 # encodeingdetect
 
 Plugin for AkelPad to detect encoding of text file using Mozilla [universalchardet](http://www-archive.mozilla.org/projects/intl/UniversalCharsetDetection.html)
+
 plus: Japanese encoding detect (shift_jis/jis/euc-jp/utf-8)
+
 Original author: [shoshinsha](https://akelpad.sourceforge.net/forum/viewtopic.php?t=1069)
+
+![image](https://github.com/setsumi/encodeingdetect/assets/5970554/b235d161-a9d4-4a3b-900d-f3dd92d9fa6f)
 
 ## How to use
 
-Latest AkelPad dev version
-https://akelpad.sourceforge.net/files/AkelPad-x64.zip
-https://akelpad.sourceforge.net/files/tools/AkelUpdater.zip
+Latest AkelPad dev version https://akelpad.sourceforge.net/files/AkelPad-x64.zip https://akelpad.sourceforge.net/files/tools/AkelUpdater.zip
 
-Download plugin
-https://github.com/setsumi/encodeingdetect/releases
-and place `EncodingDetect.dll` in `AkelFiles\Plugs\` subfolder.
+Download plugin https://github.com/setsumi/encodeingdetect/releases and place `EncodingDetect.dll` in `AkelFiles\Plugs` subfolder.
 
 function (for ContextMenu plugin)
 
