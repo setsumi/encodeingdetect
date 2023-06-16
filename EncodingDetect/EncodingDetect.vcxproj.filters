@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="EncodingDetect.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AkelEdit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AkelDLL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EncodingDetect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsUniversalDetector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsSJISProber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsSBCSGroupProber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsSBCharSetProber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsPkgInt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsMBCSGroupProber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsLatin1Prober.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsHebrewProber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsGB2312Prober.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsEUCTWProber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsEUCKRProber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsEUCJPProber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsEscCharsetProber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nscore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsCodingStateMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsCharSetProber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsBig5Prober.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\JpCntx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\EncodingDetectorWrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\EncodingDetector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\CharDistribution.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsUTF8Prober.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="x64Func.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StrFunc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\nsDebug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\prmem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsMemory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nsUniversalDetector\mozilla\Util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EncodingDetectDll.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EncodingDetect.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsUTF8Prober.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsUniversalDetector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsSJISProber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsSBCSGroupProber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsSBCharSetProber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsMBCSSM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsMBCSGroupProber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsLatin1Prober.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsHebrewProber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsGB2312Prober.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsEUCTWProber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsEUCKRProber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsEUCJPProber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsEscSM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsEscCharsetProber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsCharSetProber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\nsBig5Prober.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\LangThaiModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\LangHungarianModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\LangHebrewModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\LangGreekModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\LangCyrillicModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\LangBulgarianModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\JpCntx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\EncodingDetectorWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\EncodingDetector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nsUniversalDetector\CharDistribution.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="nsUniversalDetector\Makefile.in" />
+    <None Include="nsUniversalDetector\JISFreq.tab" />
+    <None Include="nsUniversalDetector\GB2312Freq.tab" />
+    <None Include="nsUniversalDetector\EUCTWFreq.tab" />
+    <None Include="nsUniversalDetector\EUCKRFreq.tab" />
+    <None Include="nsUniversalDetector\Big5Freq.tab" />
+    <None Include="nsUniversalDetector\ReadMe.txt" />
+    <None Include="icon1.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
