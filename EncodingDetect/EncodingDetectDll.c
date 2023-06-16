@@ -491,13 +491,13 @@ int AutodetectCodePage(const wchar_t *wpFile, UINT_PTR dwBytesToCheck, DWORD dwF
 
 	//Remembered code page from registry
 	
-	if (bAuto && bSaveCodepages && (dwFlags & ADT_REG_CODEPAGE))
+	if (bAuto && bSaveCodepages && (dwFlags & ADT_REGCODEPAGE))
 	{
 
-		RECENTFILESTACK *rfs;
+		STACKRECENTFILE *rfs;
 		RECENTFILE *rf;
 		int nMaxRecentFiles;
-		dwFlags&=~ADT_REG_CODEPAGE;
+		dwFlags&=~ADT_REGCODEPAGE;
 		
 		if (nMaxRecentFiles=(int)SendMessageW(hMainWnd, AKD_RECENTFILES, RF_GET, (LPARAM)&rfs))
 		{
@@ -514,9 +514,9 @@ int AutodetectCodePage(const wchar_t *wpFile, UINT_PTR dwBytesToCheck, DWORD dwF
 		if (nRegCodePage)
 		{
 			if (nRegCodePage == CODEPAGE_UTF_32LE || nRegCodePage == CODEPAGE_UTF_32BE)
-				dwFlags&=~ADT_BINARY_ERROR;
+				dwFlags&=~ADT_BINARYERROR;
 			*nCodePage=nRegCodePage;
-			dwFlags&=~ADT_DETECT_CODEPAGE;
+			dwFlags&=~ADT_DETECTCODEPAGE;
 		}
 
 	}
@@ -526,7 +526,7 @@ int AutodetectCodePage(const wchar_t *wpFile, UINT_PTR dwBytesToCheck, DWORD dwF
 	// if (dwFlags & ADT_DETECT_BOM) *bBOM=FALSE;
 
 	//Read file
-	if (dwFlags & ADT_BINARY_ERROR || dwFlags & ADT_DETECT_CODEPAGE || dwFlags & ADT_DETECT_BOM)
+	if (dwFlags & ADT_BINARYERROR || dwFlags & ADT_DETECTCODEPAGE || dwFlags & ADT_DETECTBOM)
 	{
 		hFile=CreateFileW(wpFile, GENERIC_READ, FILE_SHARE_READ|FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL|FILE_FLAG_SEQUENTIAL_SCAN, NULL);
 
@@ -555,7 +555,7 @@ int AutodetectCodePage(const wchar_t *wpFile, UINT_PTR dwBytesToCheck, DWORD dwF
 	}
 
 	//Detect Unicode BOM
-	if (dwFlags & ADT_DETECT_CODEPAGE || dwFlags & ADT_DETECT_BOM)
+	if (dwFlags & ADT_DETECTCODEPAGE || dwFlags & ADT_DETECTBOM)
 	{
 		if (dwBytesRead >= 4)
 		{
@@ -563,8 +563,8 @@ int AutodetectCodePage(const wchar_t *wpFile, UINT_PTR dwBytesToCheck, DWORD dwF
 			{
 				if (!nRegCodePage || nRegCodePage == CODEPAGE_UTF_32LE)
 				{
-					if (dwFlags & ADT_DETECT_CODEPAGE) *nCodePage=CODEPAGE_UTF_32LE;
-					if (dwFlags & ADT_DETECT_BOM) *bBOM=TRUE;
+					if (dwFlags & ADT_DETECTCODEPAGE) *nCodePage=CODEPAGE_UTF_32LE;
+					if (dwFlags & ADT_DETECTBOM) *bBOM=TRUE;
 					goto Free;
 				}
 			}
@@ -572,8 +572,8 @@ int AutodetectCodePage(const wchar_t *wpFile, UINT_PTR dwBytesToCheck, DWORD dwF
 			{
 				if (!nRegCodePage || nRegCodePage == CODEPAGE_UTF_32BE)
 				{
-					if (dwFlags & ADT_DETECT_CODEPAGE) *nCodePage=CODEPAGE_UTF_32BE;
-					if (dwFlags & ADT_DETECT_BOM) *bBOM=TRUE;
+					if (dwFlags & ADT_DETECTCODEPAGE) *nCodePage=CODEPAGE_UTF_32BE;
+					if (dwFlags & ADT_DETECTBOM) *bBOM=TRUE;
 					goto Free;
 				}
 			}
@@ -584,8 +584,8 @@ int AutodetectCodePage(const wchar_t *wpFile, UINT_PTR dwBytesToCheck, DWORD dwF
 			{
 				if (!nRegCodePage || nRegCodePage == CODEPAGE_UTF_16LE)
 				{
-					if (dwFlags & ADT_DETECT_CODEPAGE) *nCodePage=CODEPAGE_UTF_16LE;
-					if (dwFlags & ADT_DETECT_BOM) *bBOM=TRUE;
+					if (dwFlags & ADT_DETECTCODEPAGE) *nCodePage=CODEPAGE_UTF_16LE;
+					if (dwFlags & ADT_DETECTBOM) *bBOM=TRUE;
 					goto Free;
 				}
 			}
@@ -593,8 +593,8 @@ int AutodetectCodePage(const wchar_t *wpFile, UINT_PTR dwBytesToCheck, DWORD dwF
 			{
 				if (!nRegCodePage || nRegCodePage == CODEPAGE_UTF_16BE)
 				{
-					if (dwFlags & ADT_DETECT_CODEPAGE) *nCodePage=CODEPAGE_UTF_16BE;
-					if (dwFlags & ADT_DETECT_BOM) *bBOM=TRUE;
+					if (dwFlags & ADT_DETECTCODEPAGE) *nCodePage=CODEPAGE_UTF_16BE;
+					if (dwFlags & ADT_DETECTBOM) *bBOM=TRUE;
 					goto Free;
 				}
 			}
@@ -605,22 +605,22 @@ int AutodetectCodePage(const wchar_t *wpFile, UINT_PTR dwBytesToCheck, DWORD dwF
 			{
 				if (!nRegCodePage || nRegCodePage == CODEPAGE_UTF8)
 				{
-					if (dwFlags & ADT_DETECT_CODEPAGE) *nCodePage=CODEPAGE_UTF8;
-					if (dwFlags & ADT_DETECT_BOM) *bBOM=TRUE;
+					if (dwFlags & ADT_DETECTCODEPAGE) *nCodePage=CODEPAGE_UTF8;
+					if (dwFlags & ADT_DETECTBOM) *bBOM=TRUE;
 					goto Free;
 				}
 			}
 		}
 	}
 
-	if (dwFlags & ADT_BINARY_ERROR || dwFlags & ADT_DETECT_CODEPAGE)
+	if (dwFlags & ADT_BINARYERROR || dwFlags & ADT_DETECTCODEPAGE)
 	{
 		if (dwBytesRead >= 2)
 		{
 			for (a=0, b=dwBytesRead - 1; a < b; a+=2)
 			{
 				//Detect binary file
-				if (dwFlags & ADT_BINARY_ERROR)
+				if (dwFlags & ADT_BINARYERROR)
 				{
 					if (pBuffer[a] == 0x00 && pBuffer[a + 1] == 0x00)
 					{
@@ -630,7 +630,7 @@ int AutodetectCodePage(const wchar_t *wpFile, UINT_PTR dwBytesToCheck, DWORD dwF
 				}
 
 				//Detect UTF-16LE, UTF-16BE without BOM
-				if (dwFlags & ADT_DETECT_CODEPAGE)
+				if (dwFlags & ADT_DETECTCODEPAGE)
 				{
 					if (pBuffer[a + 1] == 0x00 && pBuffer[a] <= 0x7E)
 					{
@@ -658,47 +658,47 @@ int AutodetectCodePage(const wchar_t *wpFile, UINT_PTR dwBytesToCheck, DWORD dwF
 				}
 			}
 
-			if (dwFlags & ADT_DETECT_CODEPAGE)
+			if (dwFlags & ADT_DETECTCODEPAGE)
 			{
 				if (nUTF16LErate >= nANSIrate && nUTF16LErate >= nUTF16BErate)
 				{
 					*nCodePage=CODEPAGE_UTF_16LE;
-					dwFlags&=~ADT_DETECT_CODEPAGE;
+					dwFlags&=~ADT_DETECTCODEPAGE;
 
-					if (dwFlags & ADT_DETECT_BOM)
+					if (dwFlags & ADT_DETECTBOM)
 					{
 						*bBOM=FALSE;
-						dwFlags&=~ADT_DETECT_BOM;
+						dwFlags&=~ADT_DETECTBOM;
 					}
 				}
 				else if (nUTF16BErate >= nANSIrate && nUTF16BErate >= nUTF16LErate)
 				{
 					*nCodePage=CODEPAGE_UTF_16BE;
-					dwFlags&=~ADT_DETECT_CODEPAGE;
+					dwFlags&=~ADT_DETECTCODEPAGE;
 
-					if (dwFlags & ADT_DETECT_BOM)
+					if (dwFlags & ADT_DETECTBOM)
 					{
 						*bBOM=FALSE;
-						dwFlags&=~ADT_DETECT_BOM;
+						dwFlags&=~ADT_DETECTBOM;
 					}
 				}
 			}
 		}
 	}
 	
-	if(nCodePageForNFOFile && (dwFlags & ADT_DETECT_CODEPAGE))//.NFO file
+	if(nCodePageForNFOFile && (dwFlags & ADT_DETECTCODEPAGE))//.NFO file
 	{
 		if(nFNameLen >=4 && (0==(int)xstrcmpiW(L".NFO",wpFile + nFNameLen-4)))
 		{
 
 			*nCodePage=nCodePageForNFOFile;
-			dwFlags&=~ADT_DETECT_CODEPAGE;
+			dwFlags&=~ADT_DETECTCODEPAGE;
 		}
 	}
 
 	if(nDetectLang < 0 ) nDetectLang = nDetectType;
 	//Detect non-Unicode
-	if(dwFlags & ADT_DETECT_CODEPAGE)
+	if(dwFlags & ADT_DETECTCODEPAGE)
 	{
 
 		if(nDetectLang) //using chardet
@@ -737,7 +737,7 @@ int AutodetectCodePage(const wchar_t *wpFile, UINT_PTR dwBytesToCheck, DWORD dwF
 			}
 		}
 	}
-	if(dwFlags & ADT_DETECT_BOM)
+	if(dwFlags & ADT_DETECTBOM)
 	{
 		*bBOM=FALSE;
 	}
@@ -763,7 +763,7 @@ LRESULT CALLBACK NewMainProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	if(!(dwFlags & OD_REOPEN))// && (dwFlags & ADT_BINARY_ERROR || dwFlags & ADT_DETECT_CODEPAGE || dwFlags & ADT_DETECT_BOM))
 	{
 		//bIsRunning++;
-		dwFlags |= ADT_DETECT_CODEPAGE|ADT_DETECT_BOM|ADT_BINARY_ERROR;
+		dwFlags |= ADT_DETECTCODEPAGE|ADT_DETECTBOM|ADT_BINARYERROR;
 		//ReadOptions(FILTER_ALL);
 		//result = AutodetectCodePage(nod->wszFile,nDetectSize,dwFlags,&nCodePage,&bBOM,TRUE);
 		result = AutodetectCodePage(nod->wszFile,nDetectSize,dwFlags,&nCodePage,&bBOM,-1,TRUE);
@@ -773,10 +773,10 @@ LRESULT CALLBACK NewMainProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			//MessageBoxW(hMainWnd,wbuf,L"detected",MB_OK);
 			*(nod->nCodePage) = nCodePage;
 			*(nod->bBOM) = bBOM;
-			dwFlags&=~ADT_DETECT_CODEPAGE;
-			dwFlags&=~ADT_DETECT_BOM;
-			dwFlags&=~ADT_BINARY_ERROR;
-			dwFlags&=~ADT_REG_CODEPAGE;
+			dwFlags&=~ADT_DETECTCODEPAGE;
+			dwFlags&=~ADT_DETECTBOM;
+			dwFlags&=~ADT_BINARYERROR;
+			dwFlags&=~ADT_REGCODEPAGE;
 			*(nod->dwFlags) = dwFlags;
 		}
 		/*
@@ -837,7 +837,7 @@ void DetectCodePage(PLUGINDATA *pd, int nDetectTypeID)
 		int result;
 		DWORD dwFlags = 0;
 		if(!bIsIntitCommon) InitCommon(pd);
-		dwFlags |=ADT_DETECT_CODEPAGE|ADT_DETECT_BOM|ADT_BINARY_ERROR;
+		dwFlags |=ADT_DETECTCODEPAGE|ADT_DETECTBOM|ADT_BINARYERROR;
 		result = AutodetectCodePage(lpFrame->wszFile,nDetectSize,dwFlags,&nCodePage,&bBOM,nDetectTypeID,FALSE);
 		if(nCodePage)
 		{
