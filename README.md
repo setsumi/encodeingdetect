@@ -10,7 +10,9 @@ Original author: [shoshinsha](https://akelpad.sourceforge.net/forum/viewtopic.ph
 
 ## How to use
 
-Latest AkelPad dev version https://akelpad.sourceforge.net/files/AkelPad-x64.zip https://akelpad.sourceforge.net/files/tools/AkelUpdater.zip
+Latest AkelPad dev version:\
+https://akelpad.sourceforge.net/files/AkelPad-x64.zip \
+https://akelpad.sourceforge.net/files/tools/AkelUpdater.zip
 
 Download plugin https://github.com/setsumi/encodeingdetect/releases and place `EncodingDetect.dll` in `AkelFiles\Plugs` subfolder.
 
